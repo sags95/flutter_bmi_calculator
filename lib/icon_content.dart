@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'constants.dart';
 
 class IconCard extends StatelessWidget {
   final IconData icon;
   final String iconTitle;
+
 
   IconCard({@required this.icon, @required this.iconTitle});
 
@@ -20,10 +22,7 @@ class IconCard extends StatelessWidget {
         ),
         Text(
           iconTitle,
-          style: TextStyle(
-            fontSize: 18,
-            color: Color(0xFF8D8E98),
-          ),
+          style: klabelTextStyle
         ),
       ],
     );
