@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'reusable_card.dart';
+import 'bottomBtn.dart';
 
 class ResultsPage extends StatelessWidget {
+
+  final String BMIResult;
+  final String resultText;
+  final String interpretation;
+
+  ResultsPage({@required this.interpretation, this.BMIResult, this.resultText});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,8 +23,10 @@ class ResultsPage extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Container(
+                padding: EdgeInsets.all(15),
+                alignment: Alignment.bottomLeft,
                 child: Text(
-                  'Your result',
+                  resultText,
                   style: kTitleTxtStyle,
                 ),
               ),
@@ -30,23 +40,31 @@ class ResultsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'Normal',
+                      resultText.toUpperCase(),
                       style: kResultTxtStyle,
                     ),
                     Text(
-                      '18.3',
+                      BMIResult,
                       style: kBMITextStyle,
                     ),
                     Text(
-                      'Your BMI result is quite low...',
+                      interpretation,
                       style: kBodyTxtStyle,
                       textAlign: TextAlign.center,
                     ),
+
                   ],
                 ),
               ),
-            )
+            ),
+            BottomBtn(
+              btnTitle: 'RE-CALCULATE',
+              onTap: (){
+                Navigator.pop(context);
+              },
+            ),
           ],
-        ));
+        ),
+    );
   }
 }
